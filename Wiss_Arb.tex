@@ -1,0 +1,121 @@
+\documentclass[
+    12pt,                              % Schriftgröße
+    fleqn,                             % Gleichungen linksbündig
+    twoside,
+    headsepline,                       % einzeichnen einer Linie unter die Kopfzeile
+    listof=totoc,
+    toc=chapterentrywithdots,
+    bibliography=totocnumbered,        % Nummerierung des Literaturverzeichnis
+    parskip=half,                      % Absatzabstände erzeugen
+]{scrreprt}
+
+\usepackage[                            % Seitenränder
+    left = 25mm,
+    right = 25mm,
+    top = 30mm,
+    bottom = 25mm,
+    bindingoffset=15mm,
+]{geometry}
+
+\usepackage[pdfpagelabels,
+    pdfstartview = FitH,
+    bookmarksopen = false,
+    bookmarksnumbered = true,
+    linkcolor = black,
+    plainpages = false,
+    hypertexnames = false,
+    citecolor = black
+]{hyperref}
+
+\newcommand*{\captionsource}[2]{%
+  \caption[{#1}]{%
+    #1%
+    \\\hspace{\linewidth}%
+    Quelle: #2%
+  }%
+}
+
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}                 % UTF8 (Windowsspezifisch), Für Umlaute wie ä,ö,ü,$,...
+\usepackage[ngerman]{babel}                 % Deutsch
+\usepackage{lmodern}                        % Schriftart 
+\usepackage{graphicx, subfig}
+\usepackage{float}
+\usepackage{scrhack}                        % Warnung wegen floats unterdrücken
+\usepackage{pdfpages}
+\graphicspath{{img/}}
+\setkomafont{disposition}{\bfseries}        % Dei Schriftart für alles setzen (Überschriften etc.)
+\usepackage[onehalfspacing]{setspace}       % Zeilenabstand 1,5cm
+\BeforeStartingTOC[toc]{\singlespacing}     % "Korrekter" Zeilenabstand im Inhaltsverzeichnis
+
+\usepackage{scrlayer-scrpage}               % Um Kopf- und Fußzeile ändern zu können
+\clearpairofpagestyles                      % Löscht Standardeinstellungen
+
+\ihead{\normalfont{\headmark}}                  % Header Inside
+\automark[chapter]{chapter}                     % \automark[rechte Seite]{linke Seite}
+\chead{}                                        % Header Center
+\ohead{\pagemark}                               % Header Outside
+\renewcommand*\chapterpagestyle{scrheadings}    % Header auch für \chapter generieren
+    % Wie oben nur für Footer
+\ifoot{\normalfont\footnotesize{Bastian Huber}}
+\cfoot{}
+\ofoot{\normalfont\footnotesize{\today}}
+
+\usepackage{lipsum}                         % Blindtext mit \lipsum generieren
+                    
+\addtokomafont{chapter}{\large}             % Chapter, Section etc. Schriftgröße
+\addtokomafont{section}{\normalfont\large}
+\addtokomafont{subsection}{\normalfont\normalsize}
+
+%#################################################################
+% Begin des Document
+% ----------------------------------------------------------------
+\begin{document}
+    \pagenumbering{Roman}
+    %#################################################################
+    % Titelseite
+    % ----------------------------------------------------------------
+    \input{1_Titelseite/Titelseite.tex}  
+    \cleardoublepage
+    
+    %#################################################################
+    % Abstract und Vorwort
+    % ----------------------------------------------------------------
+    \include{2_Vorworte_Abstract/Abstract.tex}
+    \cleardoublepage
+
+    %#################################################################
+    % ToC
+    % ----------------------------------------------------------------
+    \tableofcontents
+    \cleardoublepage 
+
+    \listoffigures
+    \cleardoublepage 
+
+    %\listoftables
+    %\cleardoublepage                  % zum Beenden der roman Seitennummerierung! \clearpage
+
+    \pagenumbering{arabic}            % Seitennummerierung Hauptteil
+    %#################################################################
+    % Inhalt
+    % ----------------------------------------------------------------                      
+    \include{3_Inhalt/Einleitung.tex}
+    \cleardoublepage
+    \include{3_Inhalt/Hauptteil.tex}
+    \cleardoublepage
+    \include{3_Inhalt/Schluss.tex}
+    \cleardoublepage
+
+    %#################################################################
+    % Anhaenge
+    % ----------------------------------------------------------------                      
+    \include{4_Anhaenge/Eidesstattliche_Erklaerung.tex}
+
+    %\raggedright                       % Blocksatz ausstellen
+    %\bibliographystyle{unsrt}           % Literatur nummeriert darstellen
+    \bibliographystyle{plain}
+    \bibliography{Literaturstellen}     % .bib einbinden
+
+\end{document}

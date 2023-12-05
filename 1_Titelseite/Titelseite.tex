@@ -1,0 +1,47 @@
+\newgeometry{           % Custom Seitenlayout für die Titelseite (kein Bund)
+    left = 25mm,
+    right = 25mm,
+    top = 30mm,
+    bottom = 25mm,
+    bindingoffset=0mm,
+}
+\thispagestyle{empty}
+\begin{titlepage}
+    \hfill \includegraphics[scale=0.8]{1_Titelseite/LogoHFU.pdf}\\
+    \begin{tabular}{p{\textwidth}}
+        \begin{center}
+            \LARGE{[Art der Arbeit]}
+        \end{center}
+        
+        \begin{center}
+            \LARGE{[Studiengang]}
+        \end{center}
+        \\
+        \begin{center}
+            \textbf{\Huge{[Titel]}}
+        \end{center}
+
+        \begin{center}
+            \LARGE{[Untertitel]}
+        \end{center}
+        
+        \begin{minipage}{\textwidth}
+            \vskip 8cm
+            {\normalsize}
+            \begin{center}
+                \begin{tabular}{ll}
+                    Referent: & [Name]   \tabularnewline
+                    Korreferent:& [Name]   \tabularnewline
+                    Vorgelegt am:& [Datum]   \tabularnewline
+                    Vorgelegt von:& [Name] \tabularnewline
+                        & [Matrikelnummer]   \tabularnewline
+                        & [Straße]   \tabularnewline
+                        & [PLZ Ortschaft]   \tabularnewline
+                        & [Email]    \tabularnewline
+                \end{tabular}
+            \end{center}
+            {\normalsize}
+        \end{minipage}
+    \end{tabular}
+\end{titlepage}
+\restoregeometry        % Seitenlayout wird wieder zurückgesetzt
