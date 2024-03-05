@@ -1,3 +1,3 @@
 # HFU LaTeX Template
 
-For use with VSCode and LaTeX Extensions
+Use with VSCode and LaTeX Extensions

@@ -1,15 +1,15 @@
 \documentclass[
-    12pt,                              % Schriftgröße
-    fleqn,                             % Gleichungen linksbündig
+    12pt,                              % Font Size
+    fleqn,                             % Equations left-aligned
     twoside,
-    headsepline,                       % einzeichnen einer Linie unter die Kopfzeile
+    headsepline,                       % Line below the header
     listof=totoc,
     toc=chapterentrywithdots,
-    bibliography=totocnumbered,        % Nummerierung des Literaturverzeichnis
-    parskip=half,                      % Absatzabstände erzeugen
+    bibliography=totocnumbered,        % Numbering of the bibliography
+    parskip=half,                      % Paragraph Spacing
 ]{scrreprt}
 
-\usepackage[                            % Seitenränder
+\usepackage[                           % Margins 
     left = 25mm,
     right = 25mm,
     top = 30mm,
@@ -37,52 +37,52 @@
 
 
 \usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}                 % UTF8 (Windowsspezifisch), Für Umlaute wie ä,ö,ü,$,...
-\usepackage[ngerman]{babel}                 % Deutsch
-\usepackage{lmodern}                        % Schriftart 
+\usepackage[utf8]{inputenc}                     % UTF8 (Specific to Windows), for ä,ö,ü,$,...
+\usepackage[ngerman]{babel}                     % German
+\usepackage{lmodern}                            % Font 
 \usepackage{graphicx, subfig}
 \usepackage{float}
-\usepackage{scrhack}                        % Warnung wegen floats unterdrücken
+\usepackage{scrhack}                            % Suppress warnings regarding floats
 \usepackage{pdfpages}
 \graphicspath{{img/}}
-\setkomafont{disposition}{\bfseries}        % Dei Schriftart für alles setzen (Überschriften etc.)
-\usepackage[onehalfspacing]{setspace}       % Zeilenabstand 1,5cm
-\BeforeStartingTOC[toc]{\singlespacing}     % "Korrekter" Zeilenabstand im Inhaltsverzeichnis
+\setkomafont{disposition}{\bfseries}            % Set global font (Headings etc.)
+\usepackage[onehalfspacing]{setspace}           % Line Spacing 1,5cm
+\BeforeStartingTOC[toc]{\singlespacing}         % Proper line spacing in the table of contents
 
-\usepackage{scrlayer-scrpage}               % Um Kopf- und Fußzeile ändern zu können
-\clearpairofpagestyles                      % Löscht Standardeinstellungen
+\usepackage{scrlayer-scrpage}                   % To change header and footer
+\clearpairofpagestyles                          % Delete default settings
 
 \ihead{\normalfont{\headmark}}                  % Header Inside
-\automark[chapter]{chapter}                     % \automark[rechte Seite]{linke Seite}
+\automark[chapter]{chapter}                     % \automark[right Side]{left Side}
 \chead{}                                        % Header Center
 \ohead{\pagemark}                               % Header Outside
-\renewcommand*\chapterpagestyle{scrheadings}    % Header auch für \chapter generieren
-    % Wie oben nur für Footer
-\ifoot{\normalfont\footnotesize{Bastian Huber}}
-\cfoot{}
-\ofoot{\normalfont\footnotesize{\today}}
+\renewcommand*\chapterpagestyle{scrheadings}    % Generate header for \chapter
 
-\usepackage{lipsum}                         % Blindtext mit \lipsum generieren
+\ifoot{\normalfont\footnotesize{Bastian Huber}} % Footer Inside
+\cfoot{}                                        % Footer Center
+\ofoot{\normalfont\footnotesize{\today}}        % Footer Outside
+
+\usepackage{lipsum}                             % Generate Placeholder Text with \lipsum
                     
-\addtokomafont{chapter}{\large}             % Chapter, Section etc. Schriftgröße
+\addtokomafont{chapter}{\large}                 % Font Size for Chapter, Section etc.
 \addtokomafont{section}{\normalfont\large}
 \addtokomafont{subsection}{\normalfont\normalsize}
 
 %#################################################################
-% Begin des Document
+% Start of Document
 % ----------------------------------------------------------------
 \begin{document}
     \pagenumbering{Roman}
     %#################################################################
-    % Titelseite
+    % Title Page
     % ----------------------------------------------------------------
-    \input{1_Titelseite/Titelseite.tex}  
+    \input{1_Titlepage/Titlepage.tex}  
     \cleardoublepage
     
     %#################################################################
-    % Abstract und Vorwort
+    % Abstract and Preface
     % ----------------------------------------------------------------
-    \include{2_Vorworte_Abstract/Abstract.tex}
+    \include{2_Abstract_Preface/Abstract.tex}
     \cleardoublepage
 
     %#################################################################
@@ -95,27 +95,27 @@
     \cleardoublepage 
 
     %\listoftables
-    %\cleardoublepage                  % zum Beenden der roman Seitennummerierung! \clearpage
+    %\cleardoublepage                  % To end the roman page numbering! \clearpage
 
-    \pagenumbering{arabic}            % Seitennummerierung Hauptteil
+    \pagenumbering{arabic}             % Page Numbering Main Part
     %#################################################################
-    % Inhalt
+    % Content
     % ----------------------------------------------------------------                      
-    \include{3_Inhalt/Einleitung.tex}
+    \include{3_Content/1_Introduction.tex}
     \cleardoublepage
-    \include{3_Inhalt/Hauptteil.tex}
+    \include{3_Content/2_Main.tex}
     \cleardoublepage
-    \include{3_Inhalt/Schluss.tex}
+    \include{3_Content/3_End.tex}
     \cleardoublepage
 
     %#################################################################
-    % Anhaenge
+    % Attachements
     % ----------------------------------------------------------------                      
-    \include{4_Anhaenge/Eidesstattliche_Erklaerung.tex}
+    \include{4_Attachements/Affidavit.tex}
 
-    %\raggedright                       % Blocksatz ausstellen
-    %\bibliographystyle{unsrt}           % Literatur nummeriert darstellen
+    %\raggedright                        % Turn off Justification
+    %\bibliographystyle{unsrt}           % Show numbered references
     \bibliographystyle{plain}
-    \bibliography{Literaturstellen}     % .bib einbinden
+    \bibliography{Bibliography}     % include .bib 
 
 \end{document}
