@@ -27,6 +27,11 @@
     citecolor = black
 ]{hyperref}
 
+\usepackage[
+  backend=biber,
+  style=numeric
+]{biblatex}
+
 \newcommand*{\captionsource}[2]{%
   \caption[{#1}]{%
     #1%
@@ -68,6 +73,7 @@
 \addtokomafont{section}{\normalfont\large}
 \addtokomafont{subsection}{\normalfont\normalsize}
 
+\addbibresource{Bibliography.bib}
 %#################################################################
 % Start of Document
 % ----------------------------------------------------------------
@@ -115,7 +121,6 @@
 
     %\raggedright                        % Turn off Justification
     %\bibliographystyle{unsrt}           % Show numbered references
-    \bibliographystyle{plain}
-    \bibliography{Bibliography}     % include .bib 
+    \printbibliography
 
 \end{document}
